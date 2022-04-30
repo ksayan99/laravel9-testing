@@ -47,22 +47,23 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">UID</th>
+                            <th scope="col">Sl NO</th>
                             <th scope="col">Full Name</th>
-                            <th scope="col">Valid Email Address</th>
+                            <th scope="col">Email Address</th>
                             <th scope="col">Mobile Number</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if (!$data->isEmpty())    
+                        @if (!$data->isEmpty())
+                            @php $slno = 1 @endphp
                             @foreach ($data as $item)    
                             <tr>
-                                <th scope="row">{{ $item->uid }}</th>
+                                <th scope="row">{{ $slno++ }}</th>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>+91{{ $item->mobile }}</td>
                                 <td><button type="button" class="btn btn-warning">Update</button></td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                <td><button type="button" class="btn btn-danger" onclick="location.href='delete/{{$item->uid}}'">Delete</button></td>
                             </tr>
                             @endforeach
                         @else <tr><td colspan="4" align="center">Register Someone to Display Data</td></tr>

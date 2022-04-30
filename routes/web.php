@@ -15,4 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[EmployeeCRUD::class,'index'])->name('home');
-Route::post('/',[EmployeeCRUD::class,'create'])->name('create');
+Route::post('/',[EmployeeCRUD::class,'create']);
+Route::post('/update',[EmployeeCRUD::class,'update'])->name('update');
+Route::get('/edit/{id}',[EmployeeCRUD::class,'edit'])->name('edit');
+Route::get('/delete/{id}',[EmployeeCRUD::class,'destroy'])->name('delete');

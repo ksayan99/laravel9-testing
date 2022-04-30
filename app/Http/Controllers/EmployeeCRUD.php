@@ -15,7 +15,7 @@ class EmployeeCRUD extends Controller
      */
     public function index()
     {
-        $response = DB::table('employees')->get();
+        $response = DB::table('employees')->orderBy('created_at','desc')->get();
         return view('home',['data' => $response]);
     }
 
@@ -90,6 +90,7 @@ class EmployeeCRUD extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('employees')->where('uid',$id)->delete();
+        return redirect(route('home'))->with('status','Successfully Deleted !!');
     }
 }
