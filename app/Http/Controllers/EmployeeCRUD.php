@@ -67,7 +67,8 @@ class EmployeeCRUD extends Controller
      */
     public function edit($id)
     {
-        //
+        $response = DB::table('employees')->where('uid',$id)->get();
+        return view('modify',['data' => $response]);
     }
 
     /**
@@ -77,9 +78,15 @@ class EmployeeCRUD extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $data, $id)
     {
-        //
+        DB::table('employees')->where('uid',$id)->update([
+            'email' => $data->email,
+            'name' => $data->name,
+            'mobile' => $data->mobile,
+            'updated_at' => Carbon::now(),
+        ]);
+        return redirect(route('home'))->with('status','Updation Successful !!');
     }
 
     /**

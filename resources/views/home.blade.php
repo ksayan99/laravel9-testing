@@ -36,7 +36,8 @@
                         <input type="password" class="form-control" name='password'>
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Register Yourself</button>
+                        <button type="submit" class="btn btn-success">Register Yourself</button>
+                        <button type="reset" class="btn btn-primary">Reset Everything</button>
                     </div>
                 </form>
                 @if (session()->has('status'))
@@ -47,7 +48,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Sl NO</th>
+                            <th scope="col">Sl</th>
                             <th scope="col">Full Name</th>
                             <th scope="col">Email Address</th>
                             <th scope="col">Mobile Number</th>
@@ -62,7 +63,7 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>+91{{ $item->mobile }}</td>
-                                <td><button type="button" class="btn btn-warning">Update</button></td>
+                                <td><button type="button" class="btn btn-warning" onclick="location.href='edit/{{$item->uid}}'">Update</button></td>
                                 <td><button type="button" class="btn btn-danger" onclick="location.href='delete/{{$item->uid}}'">Delete</button></td>
                             </tr>
                             @endforeach
