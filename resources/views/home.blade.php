@@ -56,10 +56,9 @@
                     </thead>
                     <tbody>
                         @if (!$data->isEmpty())
-                            @php $slno = 1 @endphp
                             @foreach ($data as $item)    
                             <tr>
-                                <th scope="row">{{ $slno++ }}</th>
+                                <th scope="row">{{ $item->uid }}</th>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>+91{{ $item->mobile }}</td>
