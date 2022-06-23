@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Http\Requests\Validator;
 
 class EmployeeCRUD extends Controller
 {
@@ -24,8 +25,9 @@ class EmployeeCRUD extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $data)
+    public function create(Validator $data)
     {
+        $data->validate();
         DB::table('employees')->insert([
             'email' => $data->email,
             'name' => $data->name,

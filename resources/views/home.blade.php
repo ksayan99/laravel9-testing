@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+    <link rel="stylesheet" href="{{asset('custom.css')}}">
     <title> > Laravel 9 Crud </title>
 </head>
 
@@ -22,18 +23,30 @@
                     <div class="mb-3">
                         <label for="exampleInputName1" class="mb-2">Your Full Name</label>
                         <input type="text" class="form-control" name='name'>
+                        @error('name')
+                            <div class="alert2 alert-danger msg">{{$message}}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="mb-2">Email Address</label>
                         <input type="email" class="form-control" name='email'>
+                        @error('mail')
+                            <div class="alert2 alert-danger msg">{{$message}}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPhone1" class="mb-2">Mobile Number</label>
                         <input type="text" class="form-control" name='mobile'>
+                        @error('mobile')
+                            <div class="alert2 alert-danger msg">{{$message}}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="mb-2">Type Password</label>
                         <input type="password" class="form-control" name='password'>
+                        @error('passwd')
+                            <div class="alert2 alert-danger msg">{{$message}}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-success">Register Yourself</button>
