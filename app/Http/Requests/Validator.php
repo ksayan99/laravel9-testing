@@ -25,9 +25,9 @@ class Validator extends FormRequest
     {
         return [
             'name' => 'required|string|max:50',
-            'mail' => 'required|email',
-            'mobile' => 'required|numeric|min:10|max:10',
-            'passwd' => 'required|min:8|max:12',
+            'email' => 'required|email|max:20',
+            'mobile' => 'required|numeric|min:10',
+            'password' => 'required|min:6|max:8',
         ];
     }
 
@@ -35,7 +35,7 @@ class Validator extends FormRequest
     {
         return [
             'name.required' => 'Name can not be empty',
-            'mail.required' => 'You must provide email',
+            'email.required' => 'You must provide email',
             'mobile.required' => 'Please enter your number',
             'passwd.required' => 'Enter any valid password'
         ];

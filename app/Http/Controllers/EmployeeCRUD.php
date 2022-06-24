@@ -17,7 +17,7 @@ class EmployeeCRUD extends Controller
     public function index()
     {
         $response = DB::table('employees')->orderBy('created_at','desc')->get();
-        return view('home',['data' => $response]);
+        return view('register',['data' => $response]);
     }
 
     /**
@@ -27,7 +27,7 @@ class EmployeeCRUD extends Controller
      */
     public function create(Validator $data)
     {
-        $data->validate();
+        $data->rules();
         DB::table('employees')->insert([
             'email' => $data->email,
             'name' => $data->name,
@@ -36,7 +36,7 @@ class EmployeeCRUD extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        return redirect(route('home'))->with('status','Registration Successful !!');
+        return redirect(route('create'))->with('status','Registration Successful !!');
     }
 
     /**
@@ -88,7 +88,7 @@ class EmployeeCRUD extends Controller
             'mobile' => $data->mobile,
             'updated_at' => Carbon::now(),
         ]);
-        return redirect(route('home'))->with('status','Updation Successful !!');
+        return redirect(route('create'))->with('status','Updation Successful !!');
     }
 
     /**
@@ -100,6 +100,6 @@ class EmployeeCRUD extends Controller
     public function destroy($id)
     {
         DB::table('employees')->where('uid',$id)->delete();
-        return redirect(route('home'))->with('status','Successfully Deleted !!');
+        return redirect(route('create'))->with('status','Successfully Deleted !!');
     }
 }

@@ -18,7 +18,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-sm-4">
-                <form method="post" action="">
+                <form method="post" action="{{route('createAction')}}">
                     @csrf
                     <div class="mb-3">
                         <label for="exampleInputName1" class="mb-2">Your Full Name</label>
@@ -30,7 +30,7 @@
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="mb-2">Email Address</label>
                         <input type="email" class="form-control" name='email'>
-                        @error('mail')
+                        @error('email')
                             <div class="alert2 alert-danger msg">{{$message}}</div>
                         @enderror
                     </div>
@@ -44,7 +44,7 @@
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="mb-2">Type Password</label>
                         <input type="password" class="form-control" name='password'>
-                        @error('passwd')
+                        @error('password')
                             <div class="alert2 alert-danger msg">{{$message}}</div>
                         @enderror
                     </div>
