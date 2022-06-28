@@ -49,8 +49,8 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-success">Register Yourself</button>
-                        <button type="reset" class="btn btn-primary">Reset Everything</button>
+                        <button type="submit" class="btn btn-success">{{__('create.register')}}</button>
+                        <button type="reset" class="btn btn-primary">{{__('create.reset')}}</button>
                     </div>
                 </form>
                 @if (session()->has('status'))
@@ -61,10 +61,10 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Sl</th>
-                            <th scope="col">Full Name</th>
-                            <th scope="col">Email Address</th>
-                            <th scope="col">Mobile Number</th>
+                            <th scope="col">{{__('create.serial') }}</th>
+                            <th scope="col">{{__('create.display-name') }}</th>
+                            <th scope="col">{{__('create.display-mail') }}</th>
+                            <th scope="col">{{__('create.display-mob') }}</th>
                         </tr>
                     </thead>
                     <tbody>
