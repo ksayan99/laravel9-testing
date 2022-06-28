@@ -21,28 +21,28 @@
                 <form method="post" action="{{route('createAction')}}">
                     @csrf
                     <div class="mb-3">
-                        <label for="exampleInputName1" class="mb-2">Your Full Name</label>
+                        <label class="mb-2">{{__('create.name') }}</label>
                         <input type="text" class="form-control" name='name'>
                         @error('name')
                             <div class="alert2 alert-danger msg">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="mb-2">Email Address</label>
+                        <label class="mb-2">{{__('create.email') }}</label>
                         <input type="email" class="form-control" name='email'>
                         @error('email')
                             <div class="alert2 alert-danger msg">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPhone1" class="mb-2">Mobile Number</label>
+                        <label class="mb-2">{{__('create.mob') }}</label>
                         <input type="text" class="form-control" name='mobile'>
                         @error('mobile')
                             <div class="alert2 alert-danger msg">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="mb-2">Type Password</label>
+                        <label class="mb-2">{{__('create.pass') }}</label>
                         <input type="password" class="form-control" name='password'>
                         @error('password')
                             <div class="alert2 alert-danger msg">{{$message}}</div>

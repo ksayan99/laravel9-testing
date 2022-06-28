@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/create',[EmployeeCRUD::class,'index'])->name('create');
+Route::get('/create/{lang?}',[EmployeeCRUD::class,'index'])->name('create');
 Route::post('/create',[EmployeeCRUD::class,'create'])->name('createAction');
 Route::get('/edit/{id}',[EmployeeCRUD::class,'edit'])->name('edit');
 Route::put('/edit/{id}',[EmployeeCRUD::class,'update']);

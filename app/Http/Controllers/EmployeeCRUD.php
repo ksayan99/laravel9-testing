@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Http\Requests\Validator;
+use Illuminate\Support\Facades\App;
 
 class EmployeeCRUD extends Controller
 {
@@ -16,6 +17,7 @@ class EmployeeCRUD extends Controller
      */
     public function index()
     {
+        request('lang') ? App::setlocale(request('lang')) : null; // condition 
         $response = DB::table('employees')->orderBy('created_at','desc')->get();
         return view('register',['data' => $response]);
     }
