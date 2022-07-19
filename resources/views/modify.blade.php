@@ -17,26 +17,25 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-sm-4">
-                @foreach ($data as $item)
                 <form method="post" action="">
                     @csrf @method('put')
                     <div class="mb-3">
                         <label for="exampleInputName1" class="mb-2">Your Full Name</label>
-                        <input type="text" class="form-control" name='name' value="{{ $item->name }}">
+                        <input type="text" class="form-control" name='name' value="{{ $data->name }}">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="mb-2">Email Address</label>
-                        <input type="email" class="form-control" name='email' value="{{ $item->email }}">
+                        <input type="email" class="form-control" name='email' value="{{ $data->email }}">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPhone1" class="mb-2">Mobile Number</label>
-                        <input type="text" class="form-control" name='mobile' value="{{ $item->mobile }}">
+                        <input type="text" class="form-control" name='mobile'
+                        value="{{ preg_replace('/^\+?91|\|1|\D/','',($data->mobile)); }}">
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-success">Update Records</button>
                     </div>
                 </form>
-                @endforeach
                 @if (session()->has('status'))
                 <div class="alert alert-success mb-4" role="alert">{{ session('status') }}</div>
                 @endif

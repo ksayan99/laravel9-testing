@@ -69,14 +69,15 @@
                     </thead>
                     <tbody>
                         @if (!$data->isEmpty())
+                            @php $slno = 1; @endphp
                             @foreach ($data as $item)    
                             <tr>
-                                <th scope="row">{{ $item->uid }}</th>
+                                <th scope="row">{{ $slno++ }}</th>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
-                                <td>+91{{ $item->mobile }}</td>
-                                <td><button type="button" class="btn btn-warning" onclick="location.href='edit/{{$item->uid}}'">Update</button></td>
-                                <td><button type="button" class="btn btn-danger" onclick="location.href='delete/{{$item->uid}}'">Delete</button></td>
+                                <td>{{ $item->mobile }}</td>
+                                <td><button type="button" class="btn btn-warning" onclick="location.href='/edit/{{$item->uid}}'">Update</button></td>
+                                <td><button type="button" class="btn btn-danger" onclick="location.href='/delete/{{$item->uid}}'">Delete</button></td>
                             </tr>
                             @endforeach
                         @else <tr><td colspan="4" align="center">Register Someone to Display Data</td></tr>

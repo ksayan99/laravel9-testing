@@ -7,7 +7,7 @@ return [
     'pass' => 'টাইপ পাসওয়ার্ড',
     'register' => 'নিবন্ধন করুন',
     'reset' => 'রিসেট করুন',
-    'serial' => 'ক্রমিক নং',
+    'serial' => 'ক্রমিক',
     'display-name' => 'পুরো নাম',
     'display-mail' => 'ইমেইল আইডি',
     'display-mob' => 'মোবাইল নম্বর'

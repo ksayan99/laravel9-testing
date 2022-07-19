@@ -3,105 +3,73 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Employee;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+// use Carbon\Carbon; // direct usage by '/'
 use App\Http\Requests\Validator;
 use Illuminate\Support\Facades\App;
 
 class EmployeeCRUD extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        request('lang') ? App::setlocale(request('lang')) : null; // condition 
-        $response = DB::table('employees')->orderBy('created_at','desc')->get();
+        request('lang') ? App::setlocale(request('lang')) : null;
+        $response = Employee::orderBy('created_at','desc')->get();
         return view('register',['data' => $response]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Validator $data)
     {
         $data->rules();
-        DB::table('employees')->insert([
+        Employee::create([
             'email' => $data->email,
             'name' => $data->name,
             'mobile' => $data->mobile,
             'password' => md5($data->password),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
         ]);
         return redirect(route('create'))->with('status','Registration Successful !!');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
+    // OPTIONAL FUNCTION STARTING
     public function store(Request $request)
     {
-        //
+        DB::table('employees')->insert([
+            'email' => 'sayan@gmail.com',
+            'name' => 'sayan karmakar',
+            'mobile' => 9876543210,
+            'password' => md5(123456),
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show()
     {
-        //
-    }
+        return Employee::all();
+    } // OPTIONAL FUNCTION ENDING
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit($uid)
     {
-        $response = DB::table('employees')->where('uid',$id)->get();
+        $response = Employee::find($uid);
         return view('modify',['data' => $response]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $data, $id)
+    public function update(Request $data, $uid)
     {
-        DB::table('employees')->where('uid',$id)->update([
+        Employee::find($uid)->first()->update([
             'email' => $data->email,
             'name' => $data->name,
             'mobile' => $data->mobile,
-            'updated_at' => Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
         ]);
         return redirect(route('create'))->with('status','Updation Successful !!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy($uid)
     {
-        DB::table('employees')->where('uid',$id)->delete();
+        Employee::find($uid)->delete();
         return redirect(route('create'))->with('status','Successfully Deleted !!');
     }
 }

@@ -7,7 +7,7 @@ return [
     'pass' => 'Type Password',
     'register' => 'Register Yourself',
     'reset' => 'Reset Everything',
-    'serial' => 'Serial No',
+    'serial' => 'Serial',
     'display-name' => 'Full Name',
     'display-mail' => 'Email Address',
     'display-mob' => 'Mobile Number'

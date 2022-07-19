@@ -14,7 +14,13 @@
 `php artisan migrate:fresh --seed`
 
 ## create controller with resource
-`php artisan make:controller controller_name -r`
+`php artisan make:controller Controller_name -r`
+
+## create controller sub-category
+`php artisan make:controller directory/Controller`
+
+## create models & controller same time
+`php artisan make:model model_name -c`
 
 ## change error files visibility
 `php artisan vendor:publish --tag==laravel-errors`
@@ -23,4 +29,6 @@
 `php artisan down --secret='keyword'`
 
 ## create custom request file
-`php artisan make:request Filename`
+`php artisan make:request Filename` 
+
+*we dont need to declare facade's classes, we can implemenet by just using '\' before class*
